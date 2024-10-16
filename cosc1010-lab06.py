@@ -1,12 +1,10 @@
-# Your Name Here
+# Ben Woolsey
 # UWYO COSC 1010
-# Submission Date
+# Submission Date: 10/15/24
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Lab Section: 11
+# Sources: Class powerpoint Slides
+# Help given from Lab section TA's for sorting array into a string
 
 
 random_string = """
@@ -78,23 +76,48 @@ print(len(random_string)) # Print out the size for reference
 # That is to say, this is a great use of dictionaries
     # You will  need to add the letter to the dictionary on first occurrence 
     # Then increment its corresponding count 
-
-
 #Load all the elements into a dictionary
 #Will need to first declare a dictionary 
 
+character_counts = {}
+for character in range(0,2499):
+    current_character = random_string[character]
+    if current_character not in character_counts:
+        character_counts[current_character] = 1
+    else:
+        character_counts[current_character] += 1
+
+
+
 # Output: each letter and its corresponding occurrence in alphabetical order
+alphabetical = sorted(character_counts)
+for char in alphabetical:
+    print(f"{char} , {character_counts[char]}")
 
 print("*"*75)
 # Output which letter occurred the most 
-
-most_occurred = ""
-least_occurred = ""
+current_max = 0
+for char in alphabetical:
+    if character_counts[char] > current_max:
+        current_max = character_counts[char]
+        most_occurred = char
+    else:
+        pass
 
 print(f"The letter that occurred the most is {most_occurred}")
 print("*"*75)
 # Output which letter occurred the least 
+current_min = 1000000000000
+for char in alphabetical: 
+    if character_counts[char] < current_min:
+        current_min = character_counts[char]
+        least_occurred = char
+    else:
+        pass
 print(f"The letter that occurred the most is {least_occurred}")
 print("*"*75)
 
 # Output what the percentage of the string each character is, again in alphabetical
+for char in alphabetical:
+    percentage = character_counts[char] / 2500
+    print(f"{char} occured {percentage} percent")
